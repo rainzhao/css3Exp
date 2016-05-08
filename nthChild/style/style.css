@@ -1,0 +1,113 @@
+header,footer,section{
+    display: block;
+}
+header h1{
+    font-family: Arial,Verdana,Sans-serif," 微软雅黑";
+    font-size: 42px;
+    text-align: center;
+    line-height: 2.5em;
+}
+section{
+    width: 860px;
+    height: 100%;
+    margin: 0 auto;
+}
+select,span{
+    font-family: Arial,Verdana,Sans-serif," 微软雅黑";
+    font-size: 32px;
+}
+select{
+    outline: none;
+    border: none;
+    width: auto;
+}
+#inputText{
+    width: auto;
+    font-family: Arial,Verdana,Sans-serif," 微软雅黑";
+    font-size: 32px;
+    border: none;
+    text-align: center;
+}
+/*dl内的dt和dd的样式*/
+
+dl{
+    border-top: 5px dashed #999;
+    border-bottom: 5px dashed #999;
+}
+dl dt{
+    background-color: #00bfff;
+    padding: 10px;
+    font-family: Arial,Verdana,Sans-serif," 微软雅黑";
+    font-size: 16px;
+}
+dl dd{
+    background-color: #80fcf3;
+    padding: 10px;
+    font-family: Arial,Verdana,Sans-serif," 微软雅黑";
+    font-size: 16px;
+}
+dl dt:hover,dl dd:hover{
+    background-color: #ddd;
+}
+
+dl dt:before {
+    content: "dt (" counter(child) ")";
+}
+
+dl dd:before{
+    content: "dd (" counter(child) ")";
+}
+
+dl > * {
+    counter-increment:child;
+    border:1px solid #bbb;
+    padding:10px;
+    margin:3px 0;
+}
+
+/*button的样式*/
+.btn{
+    text-align: center;
+}
+.button {
+    display: inline-block;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 0 #8dd5e5, 0 15px 20px rgba(0, 0, 0, .35);
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    -moz-transition: -moz-box-shadow .1s ease-in-out;
+    -o-transition: -o-box-shadow .1s ease-in-out;
+    transition: box-shadow .1s ease-in-out;
+    font-size: 50px;
+    color: #fff;
+}
+
+.button span {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #61d9ec;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(176, 90%, 70%, 0.8)), to(hsla(338, 90%, 70%, .2)));
+    background-image: -webkit-linear-gradient(hsla(186, 90%, 76%, 0.8), hsla(338, 90%, 70%, .2));
+    background-image: -moz-linear-gradient(hsla(177, 91%, 76%, 0.8), hsla(338, 90%, 70%, .2));
+    background-image: -o-linear-gradient(hsla(178, 91%, 73%, 0.8), hsla(338, 90%, 70%, .2));
+    border-radius: 8px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    font-family: 'Pacifico', Arial, sans-serif;
+    line-height: 1;
+    text-shadow: 0 -1px 1px rgba(77, 142, 175, 0.7);
+    -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
+    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+}
+
+.button:active, .button:focus {
+    box-shadow:    0 8px 0 #61afc5, 0 12px 10px rgba(0, 0, 0, .3);
+}
+
+.button:active span {
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    -o-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}

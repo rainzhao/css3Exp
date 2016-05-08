@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/nth.js"></script>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <style type="text/css">
+
+        dl > *:nth-child(2n+1) {
+            outline:3px solid red;
+            border-color:#b00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS3结构伪类选择器</h1>
+    </header>
+    <section>
+        <form>
+            <select name="select_ele" id="select_ele">
+                <option selected>dt</option>
+                <option>dd</option>
+            </select>
+            <span>:nth-</span>
+            <select name="select_ele" id="select_method">
+                <option>child</option>
+                <option>last-child</option>
+                <option>of-type</option>
+                <option>last-of-type</option>
+            </select>
+            <span>&#40;</span><input type="text" id="inputText" size="3" value="2n+1"
+            pattern="\s*([\-+]?[0-9]+?[Nn](\s*[\-+]\s*[0-9]+)?|[\-+]? [0-9]+|odd|even)\s*"><span>&#41;</span>
+        </form>
+        <dl id="ele-dl">
+            <dt></dt>
+            <dd></dd>
+        </dl>
+        <div class="btn">
+            <button id="add-dt" class="button"><span>Add-dt</span></button>
+            <button id="add-dd" class="button"><span>Add-dd</span></button>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>
