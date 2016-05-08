@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>problem</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none outside none;
+			padding: 10px;
+			background-color: #e56;
+			width: 400px;
+			color: #fff;
+			font-size: 26px;
+			margin: 50px auto;
+			margin: 0 auto;
+		}
+		#btn{
+			width:100px;
+			height: 50px;
+			margin-top: 20px;
+			font-family: "微软雅黑",arial;
+			text-align: center;
+		}
+		span,code{
+			font-size: 20px;
+		}
+		footer{
+			display: block;
+			text-align: center;
+			width: 860px;
+			margin: 0 auto;
+		}
+		.slove{
+			margin-top: 20px;
+			float: left;
+			font-family: "微软雅黑",arial;
+			
+		}
+		dl{
+			text-align: left;
+			margin-left: 40px;
+		}
+		dl dd{
+			font-size: 26px;
+			text-indent: 5em;
+		}
+		dl dt{
+			font-size: 30px;
+			font-weight: bold;
+		}
+	</style>
+	<style type="text/css">
+		ul>li:nth-child(5){
+			background-color: #999;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<ol>ol</ol>
+		<ol>ol</ol>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<footer>
+		<button id="btn">点击切换</button>
+		<span>现在是:
+			<code>ul>li:nth-child(5){
+				background-color: #999;
+			}</code>
+		</span>
+		<div class="slove">
+			<dl>
+				<dt>结论：</dt>
+				<dd>从上面的例子中可以看出当n=3时列表中的第三个li并没有为此改变，因为在ul里面有其它
+				类型的元素，(不是li)，它也会算作是列表的子元素。就上面的实例,li:nth-child(3)并不存在，
+				列表的第三个子元素是ol而不是li，如果想改变第三个li就必须改变n的值，或者使用nth-of-type
+				，就这个例子来说第三个li是列表的第5个元素！</dd>
+			</dl>
+		</div>
+	</footer>
+</body>
+<script type="text/javascript">
+	var $ = function(id){return document.getElementById(id);}
+	var $qs = function(name){return document.querySelectorAll(name);}
+	var btn = $("btn");
+	var codes = $qs("code")[0];
+	var flag = true;
+	btn.onclick = function(){
+		if(flag){
+			codes.innerHTML = "ul>li:nth-child(3){background-color: #999;}"
+			var css = document.styleSheets[1].cssRules[0].cssText="ul > li:nth-child(3) { background-color: rgb(153, 153, 153); }";
+			document.styleSheets[1].deleteRule(0);
+			document.styleSheets[1].insertRule(css, 0);
+			flag = false;
+		}else{
+			codes.innerHTML = "ul>li:nth-child(5){background-color: #999;}"
+			var css = document.styleSheets[1].cssRules[0].cssText="ul > li:nth-child(5) { background-color: rgb(153, 153, 153); }";
+			document.styleSheets[1].deleteRule(0);
+			document.styleSheets[1].insertRule(css, 0);
+			flag = true;
+		}
+	}
+</script>
+</html>

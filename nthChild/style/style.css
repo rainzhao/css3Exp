@@ -111,3 +111,22 @@ dl > * {
     -o-transform: translate(0, 4px);
     transform: translate(0, 4px);
 }
+
+
+/*div.sidebar*/
+.sidebar{
+    float: left;
+    margin-left: -230px;
+    width: 200px;
+}
+.sidebar ul li{
+    font-size: 26px;
+}
+.sidebar a{
+    text-decoration: underline;
+    padding-left: 21px;
+    background: url("../img/a.png") left -48px no-repeat;
+}
+.sidebar a:hover{
+    color: #999;
+}
