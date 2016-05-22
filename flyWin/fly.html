@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style type="text/css">
+		.wrap{
+			position: relative;
+			width: 300px;
+			height: 150px;
+			margin: 300px auto;
+		}
+		.box{
+			width: 300px;
+			height: 150px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			border-radius: 30px;
+			-webkit-transform-origin: 395px 75px;
+			-moz-transform-origin: 395px 75px;
+			-ms-transform-origin: 395px 75px;
+			-o-transform-origin: 395px 75px;
+			transform-origin: 395px 75px;
+			
+			transition: all 1s ease;	
+		}
+		.box1{
+			background-color: red;
+			transform: rotate(0);
+			z-index: 1;	
+		}
+		.box1on{
+			transform: rotate(360deg);
+		}
+		.box2{
+			background-color: #2FFF55;
+			transform: rotate(45deg);
+			z-index: 8;
+		}
+		.box2on{
+			transform: rotate(405deg);
+		}
+		.box3{
+			background-color: #00FFF7;
+			transform: rotate(90deg);
+			z-index: 7;
+		}
+		.box3on{
+			transform: rotate(450deg);
+		}
+		.box4{
+			transform: rotate(135deg);
+			background-color: #DC00FF;
+			z-index: 6;
+		}
+		.box4on{
+			transform: rotate(495deg);
+		}
+		.box5{
+			transform: rotate(180deg);
+			background-color: #00BCD4;
+			z-index: 5;
+		}
+		.box5on{
+			transform: rotate(540deg);
+		}
+		.box6{
+			transform: rotate(225deg);
+			background-color: #9E9E9E;
+			z-index: 4;
+		}
+		.box6on{
+			transform: rotate(585deg);
+		}
+		.box7{
+			transform: rotate(270deg);
+			background-color: #009688;
+			z-index: 3;
+		}
+		.box7on{
+			transform: rotate(630deg);
+		}
+		.box8{
+			transform: rotate(315deg);
+			background-color: #FFBC00;
+			z-index: 2;
+		}
+		.box8on{
+			transform: rotate(675deg);
+		}
+		.center{
+			width: 150px;
+			height: 150px;
+			border-radius: 75px;
+			background-color: #ddd;
+			position: absolute;
+			float: right;
+			left: 300px;
+
+		}
+
+		.leftArea{
+			position: absolute;
+			float: left;
+			right:20px;
+			height: 100%;
+			width: 100%;
+		}
+		/*清除浮动*/
+		.clearfix:after{
+			content:".";
+			display:block;
+			height:0;
+			clear:both;
+			visibility:hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="leftArea clearfix">
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box6"></div>
+			<div class="box box7"></div>
+			<div class="box box8"></div>
+		</div>
+		<div class="center"></div>
+	</div>
+
+</body>
+<script type="text/javascript">	
+	window.onload = function(){
+
+		var $cls = function(cls){return document.querySelectorAll("."+cls);}
+		var leftArea = $cls("leftArea")[0];
+		var boxes = leftArea.getElementsByTagName("div");
+		leftArea.onclick = function(e){
+			// console.log(e);
+			e.target.style.cssText = "position:absolute;left:-260px;top:-100px;transform:scale(2);width:300px; height:400px;"
+			for(var i=0;i<boxes.length;i++){
+				if(boxes[i]!=e.target){
+					boxes[i].style.cssText="";
+				}
+			}
+		}
+
+
+		/*控制旋转*/
+		var center = $cls("center")[0];
+		center.onclick = function(){
+			var box1 = $cls("box1")[0].classList;
+			var box2 = $cls("box2")[0].classList;
+			var box3 = $cls("box3")[0].classList;
+			var box4 = $cls("box4")[0].classList;
+			var box5 = $cls("box5")[0].classList;
+			var box6 = $cls("box6")[0].classList;
+			var box7 = $cls("box7")[0].classList;
+			var box8 = $cls("box8")[0].classList;
+			if(box1.contains("box1on")){
+				box1.remove("box1on");
+				box2.remove("box2on");
+				box3.remove("box3on");
+				box4.remove("box4on");
+				box5.remove("box5on");
+				box6.remove("box6on");
+				box7.remove("box7on");
+				box8.remove("box8on");
+			}else{
+				box1.add("box1on");
+				box2.add("box2on");
+				box3.add("box3on");
+				box4.add("box4on");
+				box5.add("box5on");
+				box6.add("box6on");
+				box7.add("box7on");
+				box8.add("box8on");
+			}
+			
+		}
+	}
+</script>
+</html>
