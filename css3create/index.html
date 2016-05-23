@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/cssstyle.css">
+    <script type="text/javascript" src="js/change.js"></script>
+    <script type="text/javascript" src="js/web-animations.min.js"></script>
+    <!--解决dom中animate的兼容性github地址:https://github.com/web-animations/web-animations-js/blob/master/web-animations.min.js-->
+    <title>css3</title>
+</head>
+<body>
+<div class="wrap">
+    <div class="content">
+        <h1>CSS3</h1>
+        <!--左部change界面-->
+        <div class="changeArea">
+            <!--css3样式选择-->
+            <div class="selected">
+                <select name="css3" id="cssStyle">
+                    <option value="1" selected="selected">Transition</option>
+                    <option value="2">Box Shadow</option>
+                    <option value="3">Text Shadow</option>
+                    <option value="4">Border Radius</option>
+                    <option value="5">Text Rotation</option>
+                    <option value="6">RGBA</option>
+                    <option value="7">CSS Gradient</option>
+                </select>
+            </div>
+            <!--transition-->
+            <div id="translates">
+                <div class="changeItem">
+                    <span>Animation Duration</span><input type="range" id="range_duration" min="200" max="2000" value="600"step="100">
+                </div>
+                <div class="changeItem">
+                    <span>Iteration Count</span><input type="range" id="range_iteration" min="1" max="20" value="5"step="1">
+                </div>
+                <div class="changeItem">
+                    <span>Animation Timing</span>
+                    <select name="aniTim" id="animationTim">
+                        <option value="0" selected="selected">ease</option>
+                        <option value="1">linear</option>
+                        <option value="2">ease-in</option>
+                        <option value="3">ease-out</option>
+                        <option value="4">ease-in-out</option>
+                    </select>
+                </div>
+                <div class="changeItem">
+                    <span>Select Keyframes</span>
+                    <label for="keySta">&nbspStart</label><input type="radio" id="keySta" name="keyframe"  value="start" checked="checked">
+                    <label for="keyEnd">End</label><input type="radio" id="keyEnd" name="keyframe" value="end" >
+                </div>
+                <div class="changeItem">
+                    <span>Translate</span><input type="range" id="range_translate" min="-300" max="300" value="0">
+                </div>
+                <div class="changeItem">
+                    <span>Rotate</span><input type="range" id="range_rotate" min="0" max="360" value="0">
+                </div>
+                <div class="changeItem">
+                    <span>Scale</span><input type="range" id="range_scale" min="0.1" max="1.5" value="1"step="0.05">
+                </div>
+                <div class="changeItem">
+                    <span>Skew</span><input type="range" id="range_skew" min="-180" max="180" value="0">
+                </div>
+                <div class="changeItem">
+                    <input type="button" value="生成" id="btnAnimate">
+                </div>
+            </div>
+            <!--boxShadow-->
+            <div id="box_shadow">
+                <div class="changeItem">
+                    <span>Inset</span>
+                    <select name="boxSha" id="box_select">
+                        <option value="0">Yes</option>
+                        <option value="1" selected="selected">No</option>
+                    </select>
+                </div>
+                <div class="changeItem">
+                    <span>Horizontal Length</span><input type="range" id="range_horizontal" min="-80" max="80" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Vertical Length</span><input type="range" id="range_vertical" min="-80" max="80" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Blur Radius</span><input type="range" id="range_blurradius" min="0" max="80" value="5">
+                </div>
+                <div class="changeItem">
+                    <span>Shadow Color</span><input type="color" id="range_shadowcolor">
+                </div>
+            </div>
+            <!--textShadow-->
+            <div id="text_shadow">
+                <div class="changeItem">
+                    <span>Horizontal Length</span><input type="range" id="range_thorizontal" min="-80" max="80" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Vertical Length</span><input type="range" id="range_tvertical" min="-70" max="70" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Blur Radius</span><input type="range" id="range_tblurradius" min="0" max="40" value="5">
+                </div>
+                <div class="changeItem">
+                    <span>Shadow Color</span><input type="color" id="range_tshadowcolor">
+                </div>
+            </div>
+            <!--borderRadius-->
+            <div id="border_radius">
+                <div class="changeItem">
+                    <span>Style</span>
+                    <select name="borderRadius" id="border_select">
+                        <option value="0" selected="selected">none</option>
+                        <option value="1">solid</option>
+                        <option value="2">dashed</option>
+                        <option value="3">dotted</option>
+                        <option value="4">double</option>
+                        <option value="5">groove</option>
+                        <option value="6">hidden</option>
+                        <option value="7">inset</option>
+                        <option value="8">outset</option>
+                        <option value="9">ridge</option>
+                        <option value="10">inherit</option>
+                    </select>
+                </div>
+                <div class="changeItem">
+                    <span>Border Width</span><input type="range" id="range_borderwidth" min="-70" max="70" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Radius</span><input type="range" id="range_borderradius" min="0" max="80" value="10">
+                </div>
+                <div class="changeItem">
+                    <span>Color</span><input type="color" id="range_bordercolor">
+                </div>
+            </div>
+            <!--text_radius-->
+            <div id="text_radius">
+                <div class="changeItem">
+                    <span>Rotate</span><input type="range" id="range_trotate" min="0" max="360" value="0">
+                </div>
+            </div>
+            <!--rgba-->
+            <div id="rgb_a">
+                <div class="changeItem">
+                    <span>R</span><input type="range" id="range_r" min="0" max="255" value="255">
+                </div>
+                <div class="changeItem">
+                    <span>G</span><input type="range" id="range_g" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span>B</span><input type="range" id="range_b" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span>opacity</span><input type="range" id="range_opacity" min="0" max="1" value="1" step="0.1">
+                </div>
+            </div>
+
+            <!--css gradient-->
+            <div id="css_gradient" id="insertRadialEnd">
+                <div class="changeItem">
+                    <span>Type</span>
+                    <select name="selectgrad" id="select_gradient">
+                        <option value="0">linear</option>
+                        <option value="1">radial</option>
+                    </select>
+                </div>
+                <div class="changeItem">
+                    <span>Start Color</span>
+                    <input type="range" id="range_startr" min="0" max="255" value="255">
+                </div>
+                <div class="changeItem">
+                    <span></span>
+                    <input type="range" id="range_startg" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span></span>
+                    <input type="range" id="range_startb" min="0" max="255" value="0">
+                </div>
+
+                <div class="changeItem">
+                    <span>Start H position</span><input type="range" id="range_gshposition" min="0" max="100" value="0">
+                </div>
+                <div class="changeItem" >
+                    <span>Start V position</span><input type="range" id="range_gsvposition" min="0" max="100" value="0">
+                </div>
+
+                <div class="changeItem space" id="insertRadialStart"></div><!--分割-->
+
+                <div class="changeItem">
+                    <span>End Color</span>
+                    <input type="range" id="range_endr" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span></span>
+                    <input type="range" id="range_endg" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span></span>
+                    <input type="range" id="range_endb" min="0" max="255" value="0">
+                </div>
+                <div class="changeItem">
+                    <span>End H position</span><input type="range" id="range_gehposition" min="0" max="100" value="0">
+                </div>
+                <div class="changeItem" >
+                    <span>End V position</span><input type="range" id="range_gevposition" min="0" max="100" value="0">
+                </div>
+            </div>
+        </div>
+
+        <!--右侧图形部分-->
+        <div class="scenceArea">
+            <div id="shape"><span id="inText">textArea</span></div>
+        </div>
+
+    </div>
+    <!--底部code面板-->
+    <div class="codeView">
+        <input type="button" id="exportBtn" value="导出">
+        <h3>CodeView</h3>
+        <div id="codeClassName">
+            <ul>
+                <li>.classname{</li>
+                <li>-webkit-animation: cssAnimation
+                    <span class="durate"></span>
+                    <span class="itera"></span>
+                    <span class="timing"></span>
+                </li>
+                <li>-moz-animation: cssAnimation
+                    <span class="durate"></span>
+                    <span class="itera"></span>
+                    <span class="timing"></span>
+                </li>
+                <li>-o-animation: cssAnimation
+                    <span class="durate"></span>
+                    <span class="itera"></span>
+                    <span class="timing"></span>
+                </li>
+                <li>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div id="codeWebkit">
+            <ul>
+                <li>@-webkit-keyframes cssAnimation {</li>
+                <li>from { -webkit-transform:
+                    <span class="codeTransSta"></span>}
+                </li>
+                <li>to{
+                    <span class="codeTransEnd"></span>}
+                </li>
+                <li>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div id="codeMoz">
+            <ul>
+                <li>@-moz-keyframes cssAnimation {</li>
+                <li>from { -moz-transform:
+                    <span class="codeTransSta"></span>}
+                </li>
+                <li>to{
+                    <span class="codeTransEnd"></span>}
+                </li>
+                <li>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div id="CodeO">
+            <ul>
+                <li>@-o-keyframes cssAnimation {</li>
+                <li>from { -o-transform:
+                    <span class="codeTransSta"></span>}
+                </li>
+                <li>to{
+                    <span class="codeTransEnd"></span>}
+                </li>
+                <li>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
