@@ -140,7 +140,7 @@
 		var leftArea = $cls("leftArea")[0];
 		var boxes = leftArea.getElementsByTagName("div");
 		leftArea.onclick = function(e){
-			// console.log(e);
+			console.log(e);
 			e.target.style.cssText = "position:absolute;left:-260px;top:-100px;transform:scale(2);width:300px; height:400px;"
 			for(var i=0;i<boxes.length;i++){
 				if(boxes[i]!=e.target){

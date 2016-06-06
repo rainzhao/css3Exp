@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟效果</title>
+	<style>
+		.wrap{
+			width:600px;
+			height: 600px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<canvas id="clock">您的浏览器不支持canvas</canvas>
+	</div>
+</body>
+<script type="text/javascript">
+	var clock = document.getElementById("clock");
+	clock.height = 600;
+	clock.width = 600;
+	var context = clock.getContext("2d");
+
+	function drawClock(){
+		//清除画布
+		context.clearRect(0,0,600,600);
+		//js操作时钟
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var seconds = date.getSeconds();
+		hours = hours + minutes/60;//计算小时等于小时+分钟(转换为小时)
+		hours = hours>12?hours-12:hours;
+		minutes = minutes + seconds/60;
+		//绘制表盘
+		context.lineWidth = 5;
+		context.strokeStyle= "#abe";
+		context.beginPath();
+		context.arc(300,300,200,0,2*Math.PI,false);
+		context.closePath();
+		context.stroke();
+		//绘制内圆
+		context.beginPath();
+		context.arc(300,300,192,0,2*Math.PI,false);
+		context.closePath();
+		context.stroke();
+		//刻度
+		//时刻度
+		for(var i=0;i<12;i++){
+			context.save();
+			context.lineWidth = 3;
+			context.translate(300,300);
+			context.strokeStyle = "#000";
+			context.rotate(i*30*Math.PI/180);
+			context.beginPath();
+			context.moveTo(0,-170);
+			context.lineTo(0,-189);
+			context.stroke();
+			context.restore();
+		}
+		//分刻度
+		for(var i=0;i<60;i++){
+			if(i%5==0){
+				continue;
+			}else{
+				context.save();
+				context.translate(300,300);
+				context.strokeStyle = "#000";
+				context.lineWidth = 2;
+				context.rotate(i*6*Math.PI/180);
+				context.beginPath();
+				context.moveTo(0,-180);
+				context.lineTo(0,-189);
+				context.closePath();
+				context.stroke();
+				context.restore();
+			}
+		}
+		//绘制时间数字
+		for(var i=1;i<13;i++){
+			context.save();
+			context.beginPath();
+			var deg = 2*Math.PI/12;//时针之间的度数为30度
+			var x1=Math.sin(i*deg);
+			var y1=-Math.cos(i*deg);
+			context.font = "bold 24px Arial";
+			context.textAlign = "center";
+			context.baseline = "middle";
+
+			context.translate(300,310);
+			//context.rotate(i*30*Math.PI/180);这样做文字会跟着旋转
+			context.fillText(i,x1*150,y1*150);
+			context.closePath();
+			context.restore();
+		}
+
+		//时针
+		context.save();
+		context.translate(300,300);
+		context.lineWidth = 6;
+		context.rotate(hours*30*Math.PI/180);
+		context.beginPath();
+		context.moveTo(0,15);
+		context.lineTo(0,-90);
+		context.closePath();
+		context.stroke();
+		//设置指针针的末尾三角形
+		context.moveTo(-8,-82);
+		context.lineTo(0,-95);
+		context.lineTo(8,-82);
+		context.lineWidth = 5;
+		context.stroke();
+		context.restore();
+
+		//分针
+		context.save();
+		context.translate(300,300);
+		context.lineWidth = 4;
+		context.rotate(minutes*6*Math.PI/180);
+		context.beginPath();
+		context.moveTo(0,15);
+		context.lineTo(0,-155);
+		context.closePath();
+		context.stroke();
+		//设置指针针的末尾三角形
+		context.moveTo(-8,-145);
+		context.lineTo(0,-160);
+		context.lineTo(8,-145);
+		context.lineWidth = 5;
+		context.stroke();
+		context.restore();
+
+
+		//秒针
+		context.save();
+
+		context.translate(300,300);
+		context.lineWidth = 2;
+		context.strokeStyle = "#e00";
+		context.rotate(seconds*6*Math.PI/180);
+		context.beginPath();
+		context.moveTo(0,15);
+		context.lineTo(0,-160);
+		context.closePath();
+		context.stroke();
+		//设置秒针上原点的圆圈
+		context.beginPath();
+		context.arc(0,0,5,0,2*Math.PI,false);
+		context.closePath();
+		context.fillStyle = "#ddd";
+		context.fill();
+		context.stroke();
+
+		//设置秒针末尾出的圆圈
+		context.beginPath();
+		context.arc(0,-145,4,0,2*Math.PI,false);
+		context.closePath();
+		context.fillStyle = "#ddd";
+		context.fill();
+		context.stroke();
+
+
+
+		context.restore();
+
+
+
+
+
+	}
+	drawClock();
+	setInterval(drawClock,1000);
+
+</script>
+</html>
